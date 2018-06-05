@@ -54,5 +54,12 @@ header h1 {
 .card {
     background-color: #00FFFF;
     border-radius: 5px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
 
+/* thanks to CSS-Tricks for the hover effect! */
+.card:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
 }
