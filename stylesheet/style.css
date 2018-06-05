@@ -79,3 +79,7 @@ header h1 {
 i {
     color: #4B2165;
 }
+
+.hide {
+    visibility: hidden;
+}
