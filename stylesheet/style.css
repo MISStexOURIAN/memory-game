@@ -58,6 +58,10 @@ h2 {
     font-size: 3rem;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 p {
     font-size: 1.75rem;
 }
