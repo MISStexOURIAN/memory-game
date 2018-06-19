@@ -24,20 +24,32 @@ body {
 header {
     height: 12%;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    color: #FFF;
+    font-family: 'Pacifico', cursive;
+    font-weight: 100;
 }
 
-header h1 {
+header p,
+header span {
+    width: 33%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.fa-star {
     color: #FFF;
-    font-family: 'Pacifico', cursive;  
-    font-size: 40px;  
-    font-weight: 100;
-    margin: auto;
-    -ms-flex-item-align: center;
-        align-self: center;
-    justify-self: center;
 }
 
 .flexContainer {
@@ -128,4 +140,6 @@ i {
 
 .hide {
     visibility: hidden;
+}
+
 }
