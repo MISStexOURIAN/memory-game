@@ -7,13 +7,35 @@ var clickedCardsClass = [];
 var matches = 0;
 var player1Matches = document.getElementById('player1Matches');
 var player2Matches = document.getElementById('player2Matches');
+var countDownDate = localStorage.getItem('startDate');
+
+// set timer and reset on page load
+if (countDownDate) {
+    countDownDate = new Date(countDownDate);
+} else {
+    countDownDate = new Date();
+    localStorage.setItem('startDate', countDownDate);
+}
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = now - countDownDate.getTime();
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById('time').innerHTML = minutes + ":" + seconds;
+}, 1000);
+
+countDownDate = new Date();
+localStorage.setItem('startDate', countDownDate);
+ 
 
 
-
+// randomly place cards on page load
 for (var i = parentContainer.children.length; i >= 0; i--) {
     parentContainer.appendChild(parentContainer.children[Math.random() * i | 0]);
 }
  
+// attach click even to cards
 for (var j = 0; j < cards.length; j++) {
     cards[j].addEventListener('click', function () {
         clickedCards.push(this);
@@ -23,6 +45,7 @@ for (var j = 0; j < cards.length; j++) {
         clickedCardsIcons.push(icon);
         clickedCardsClass.push(this.className);
 
+        // after 2 card clicks, toggle active player, check cards for matches
         if (countClicks === 2) {
             countClicks = 0;
 
