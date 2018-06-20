@@ -1,6 +1,7 @@
 var parentContainer = document.getElementById('game-container');
 var cards = document.querySelectorAll('.card');
 var countClicks = 0;
+var totalCardClicks = 0;
 var clickedCards = [];
 var clickedCardsIcons = [];
 var clickedCardsClass = [];
@@ -9,6 +10,8 @@ var player1Matches = document.getElementById('player1Matches');
 var player2Matches = document.getElementById('player2Matches');
 var countDownDate = localStorage.getItem('startDate');
 var guesses = 1;
+
+
 
 // set timer and reset on page load
 if (countDownDate) {
@@ -36,9 +39,10 @@ for (var i = parentContainer.children.length; i >= 0; i--) {
     parentContainer.appendChild(parentContainer.children[Math.random() * i | 0]);
 }
  
-// attach click even to cards
+// attach click event to cards
 for (var j = 0; j < cards.length; j++) {
     cards[j].addEventListener('click', function () {
+        totalCardClicks += 1;
         clickedCards.push(this);
         icon = this.firstChild;
         icon.classList.toggle('hide');
@@ -87,5 +91,14 @@ for (var j = 0; j < cards.length; j++) {
                 
     
         };
+        if (totalCardClicks == 16) {
+            document.getElementById('starThree').style.visibility = 'hidden';
+        } else if (totalCardClicks == 24) {
+            document.getElementById('starTwo').style.visibility = 'hidden';
+        };
     });
 };    
+
+
+
+
