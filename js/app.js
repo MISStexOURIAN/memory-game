@@ -8,6 +8,7 @@ var matches = 0;
 var player1Matches = document.getElementById('player1Matches');
 var player2Matches = document.getElementById('player2Matches');
 var countDownDate = localStorage.getItem('startDate');
+var guesses = 1;
 
 // set timer and reset on page load
 if (countDownDate) {
@@ -45,9 +46,10 @@ for (var j = 0; j < cards.length; j++) {
         clickedCardsIcons.push(icon);
         clickedCardsClass.push(this.className);
 
-        // after 2 card clicks, toggle active player, check cards for matches
+        // after 2 card clicks, update guesses, toggle active player, check cards for matches
         if (countClicks === 2) {
             countClicks = 0;
+            document.getElementById('guesses').innerHTML = guesses++;
 
             setTimeout(function () {
                 var player1 = document.getElementById('playerOne');
