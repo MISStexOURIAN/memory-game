@@ -19,11 +19,12 @@ var totalTime = document.getElementById('totalTime');
 // Thanks to w3schools for this variation of a timer!
 var countDownDate = new Date().getTime();
 var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = now - countDownDate;
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  document.getElementById("time").innerHTML = minutes + ":" + seconds;
+    var now = new Date().getTime();
+    var distance = now - countDownDate;
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var formattedSeconds = ("0" + seconds).slice(-2);
+  document.getElementById("time").innerHTML = minutes + ":" + formattedSeconds;
 }, 1000);
 
 // randomly place cards on page load

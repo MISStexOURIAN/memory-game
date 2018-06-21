@@ -102,7 +102,7 @@ button:hover {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #FEFEFE;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -199,4 +199,74 @@ i {
     visibility: hidden;
 }
 
+/* Media Queries */
+
+@media screen and (max-width: 770px) {
+
+    .time {
+        font-size: 24px;     
+        font-weight: 100;   
+    }
+    
+    .flexContainer {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 70% 30%;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    }
+
+    h2 {
+        font-size: 40px;
+        font-weight: 100;
+    }
+
+    #player1 {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+        width: 100%;
+    }
+
+    #player2 {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+        width: 100%;
+    }
+
+    #game-container {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        justify-self: center;
+    }
 }
+
+/* @media screen and (max-width: 736px) {
+    p {
+        font-size: 16px;
+    }
+    header {
+        height: 15%;
+    }
+
+    .flexContainer {
+        height: 85%;
+    }
+
+
+    #game-container {
+        grid-template-columns: repeat(4, 75px);
+        grid-template-rows: repeat(4, 75px); 
+        grid-gap: 5px;
+    }
+}
+
+} */
