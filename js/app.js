@@ -9,35 +9,22 @@ var matches = 0;
 var player1Matches = document.getElementById('player1Matches');
 var player2Matches = document.getElementById('player2Matches');
 var totalMatches = [];
-var countDownDate = localStorage.getItem('startDate');
 var guesses = 1;
 var modal = document.getElementById('modal');
 var closeButton = document.getElementsByClassName("close")[0];
 var winner = document.getElementById('winner');
-var time = document.getElementById('totalTime');
+var time = document.getElementById('time');
+var totalTime = document.getElementById('totalTime');
 
-
-
-// set timer and reset on page load
-if (countDownDate) {
-    countDownDate = new Date(countDownDate);
-} else {
-    countDownDate = new Date();
-    localStorage.setItem('startDate', countDownDate);
-}
-
+// Thanks to w3schools for this variation of a timer!
+var countDownDate = new Date().getTime();
 var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = now - countDownDate.getTime();
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById('time').innerHTML = minutes + ":" + seconds;
+  var now = new Date().getTime();
+  var distance = now - countDownDate;
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("time").innerHTML = minutes + ":" + seconds;
 }, 1000);
-
-countDownDate = new Date();
-localStorage.setItem('startDate', countDownDate);
- 
-
 
 // randomly place cards on page load
 for (var i = parentContainer.children.length; i >= 0; i--) {
@@ -82,8 +69,11 @@ for (var j = 0; j < cards.length; j++) {
                     player2Matches.innerText = newScore;
                 }; 
                 totalMatches.push('1');
+
                 if (totalMatches.length === 8) {
                     modal.style.display = "block";
+                    totalTime.innerHTML = time.innerHTML;
+                    clearInterval(x);
                     if (parseInt(player1Matches.innerHTML) > parseInt(player2Matches.innerHTML)) {
                         winner.innerHTML = 'Player 1';
                     } else if (parseInt(player1Matches.innerHTML) < parseInt(player2Matches.innerHTML)) {
