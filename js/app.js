@@ -71,11 +71,7 @@ for (var j = 0; j < cards.length; j++) {
             var secondCard = clickedCardsIcons[1];
     
 
-            if (clickedCardsClass[0] == clickedCardsClass[1]) {
-                totalMatches.push('1');
-                if (totalMatches.length === 8) {
-                    modal.style.display = "block";
-                }
+            if (clickedCardsClass[0] == clickedCardsClass[1]) {                
                 var player1 = document.getElementById('playerOne');
                 var player2 = document.getElementById('playerTwo');
                 if (player1.classList.contains('underline')) {
@@ -85,8 +81,17 @@ for (var j = 0; j < cards.length; j++) {
                     var newScore = parseInt(player2Matches.innerText) + 1;
                     player2Matches.innerText = newScore;
                 }; 
-                
-
+                totalMatches.push('1');
+                if (totalMatches.length === 8) {
+                    modal.style.display = "block";
+                    if (parseInt(player1Matches.innerHTML) > parseInt(player2Matches.innerHTML)) {
+                        winner.innerHTML = 'Player 1';
+                    } else if (parseInt(player1Matches.innerHTML) < parseInt(player2Matches.innerHTML)) {
+                        winner.innerHTML = 'Player 2';
+                    } else if (parseInt(player1Matches.innerHTML) == parseInt(player2Matches.innerHTML)) {
+                        document.getElementById('congratulations').innerHTML = 'You have tied!';
+                    }
+                };
             } else {
                 setTimeout(function (icon) {                    
                     firstCard.classList.toggle('hide');
@@ -102,8 +107,10 @@ for (var j = 0; j < cards.length; j++) {
         };
         if (totalCardClicks == 18) {
             document.getElementById('starThree').style.visibility = 'hidden';
-        } else if (totalCardClicks == 32) {
+            document.getElementById('modalStarThree').style.visibility = 'hidden';
+        } else if (totalCardClicks == 36) {
             document.getElementById('starTwo').style.visibility = 'hidden';
+            document.getElementById('modalStarTwo').style.visibility = 'hidden';
         };
     });
 };  
