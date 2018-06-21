@@ -8,8 +8,13 @@ var clickedCardsClass = [];
 var matches = 0;
 var player1Matches = document.getElementById('player1Matches');
 var player2Matches = document.getElementById('player2Matches');
+var totalMatches = [];
 var countDownDate = localStorage.getItem('startDate');
 var guesses = 1;
+var modal = document.getElementById('modal');
+var closeButton = document.getElementsByClassName("close")[0];
+var winner = document.getElementById('winner');
+var time = document.getElementById('totalTime');
 
 
 
@@ -67,6 +72,10 @@ for (var j = 0; j < cards.length; j++) {
     
 
             if (clickedCardsClass[0] == clickedCardsClass[1]) {
+                totalMatches.push('1');
+                if (totalMatches.length === 8) {
+                    modal.style.display = "block";
+                }
                 var player1 = document.getElementById('playerOne');
                 var player2 = document.getElementById('playerTwo');
                 if (player1.classList.contains('underline')) {
@@ -75,7 +84,7 @@ for (var j = 0; j < cards.length; j++) {
                 } else if (player2.classList.contains('underline')) {
                     var newScore = parseInt(player2Matches.innerText) + 1;
                     player2Matches.innerText = newScore;
-                }
+                }; 
                 
 
             } else {
@@ -91,13 +100,25 @@ for (var j = 0; j < cards.length; j++) {
                 
     
         };
-        if (totalCardClicks == 16) {
+        if (totalCardClicks == 18) {
             document.getElementById('starThree').style.visibility = 'hidden';
-        } else if (totalCardClicks == 24) {
+        } else if (totalCardClicks == 32) {
             document.getElementById('starTwo').style.visibility = 'hidden';
         };
     });
-};    
+};  
+
+// When the user clicks on <span> (x), close the modal
+closeButton.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 

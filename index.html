@@ -16,15 +16,35 @@
 
     <body>
         <header>
-            <div id="buttonContainer"><button id="startOver" onClick="window.location.href=window.location.href">Start Over</button></div>
+            <div id="buttonContainer"><button class="startOver" onClick="window.location.href=window.location.href">Start Over</button></div>
             <p class="time">Time: <span id="time"></span></p>
             <span id="stars">
-                <i class="fas fa-star fa-3x"></i>
-                <i class="fas fa-star fa-3x"></i>
-                <i class="fas fa-star fa-3x"></i>
+                <i id="starOne" class="fas fa-star fa-2x"></i>
+                <i id="starTwo" class="fas fa-star fa-2x"></i>
+                <i id="starThree" class="fas fa-star fa-2x"></i>
             </span>
             <p class="guesses">Total guesses: <span id="guesses"></span></p>
         </header>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Congratulations, <span id="winner"></span>! You won!</p>
+                <p>Rating: 
+                    <span id="modalStars">
+                        <i id="modalStarOne" class="fas fa-star fa-2x"></i>
+                        <i id="modalStarTwo" class="fas fa-star fa-2x"></i>
+                        <i id="modalStarThree" class="fas fa-star fa-2x"></i>
+                    </span>
+                </p>
+                <p>Total time: <span id="totalTime"></span></p>
+                <div id="buttonContainer">
+                    <button class="startOver" onClick="window.location.href=window.location.href">Start Over</button>
+                </div>
+            </div>  
+        </div>
+
         <div class="flexContainer">
             <section class="player" id="player1">
                 <h2 id = "playerOne" class="underline">Player 1</h2>
