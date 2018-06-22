@@ -23,22 +23,22 @@
                 <i id="starTwo" class="fas fa-star fa-2x"></i>
                 <i id="starThree" class="fas fa-star fa-2x"></i>
             </span>
-            <p class="guesses">Total guesses: <span id="guesses"></span></p>
+            <p class="guesses"><span id="total">Total </span>guesses:<span id="guesses"></span></p>
         </header>
 
         <!-- Modal -->
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p id="congratulations">Congratulations, <span id="winner"></span>! You won!</p>
-                <p>Rating: 
+                <p id="congratulations" class="modalText">Congratulations, <span id="winner"></span>! You won!</p>
+                <p class="modalText">Rating: 
                     <span id="modalStars">
-                        <i id="modalStarOne" class="fas fa-star fa-2x"></i>
-                        <i id="modalStarTwo" class="fas fa-star fa-2x"></i>
-                        <i id="modalStarThree" class="fas fa-star fa-2x"></i>
+                        <i id="modalStarOne" class="modalText fas fa-star fa-2x"></i>
+                        <i id="modalStarTwo" class="modalText fas fa-star fa-2x"></i>
+                        <i id="modalStarThree" class="modalText fas fa-star fa-2x"></i>
                     </span>
                 </p>
-                <p>Total time: <span id="totalTime"></span></p>
+                <p class="modalText">Total time: <span id="totalTime"></span></p>
                 <div id="buttonContainer">
                     <button class="startOver" onClick="window.location.href=window.location.href">Start Over</button>
                 </div>
