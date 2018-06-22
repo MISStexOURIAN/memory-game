@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-        <meta <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="js/app.js"></script>
@@ -16,12 +16,12 @@
 
     <body>
         <header>
-            <div id="buttonContainer"><button class="startOver" onClick="window.location.href=window.location.href">Start Over</button></div>
+            <div id="header-button-container"><button class="start-over" onClick="window.location.href=window.location.href">Start Over</button></div>
             <p class="time">Time: <span id="time"></span></p>
             <span id="stars">
-                <i id="starOne" class="fas fa-star fa-2x"></i>
-                <i id="starTwo" class="fas fa-star fa-2x"></i>
-                <i id="starThree" class="fas fa-star fa-2x"></i>
+                <i id="star-one" class="fas fa-star fa-2x"></i>
+                <i id="star-two" class="fas fa-star fa-2x"></i>
+                <i id="star-three" class="fas fa-star fa-2x"></i>
             </span>
             <p class="guesses"><span id="total">Total </span>guesses:<span id="guesses"></span></p>
         </header>
@@ -30,25 +30,25 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p id="congratulations" class="modalText">Congratulations, <span id="winner"></span>! You won!</p>
-                <p class="modalText">Rating: 
-                    <span id="modalStars">
-                        <i id="modalStarOne" class="modalText fas fa-star fa-2x"></i>
-                        <i id="modalStarTwo" class="modalText fas fa-star fa-2x"></i>
-                        <i id="modalStarThree" class="modalText fas fa-star fa-2x"></i>
+                <p id="congratulations" class="modal-text">Congratulations, <span id="winner"></span>! You won!</p>
+                <p class="modal-text">Rating: 
+                    <span id="modal-stars">
+                        <i id="modal-star-one" class="modal-text fas fa-star fa-2x"></i>
+                        <i id="modal-star-two" class="modal-text fas fa-star fa-2x"></i>
+                        <i id="modal-star-three" class="modal-text fas fa-star fa-2x"></i>
                     </span>
                 </p>
-                <p class="modalText">Total time: <span id="totalTime"></span></p>
-                <div id="buttonContainer">
-                    <button class="startOver" onClick="window.location.href=window.location.href">Start Over</button>
+                <p class="modal-text">Total time: <span id="total-time"></span></p>
+                <div id="modal-button-container">
+                    <button class="start-over" onClick="window.location.href=window.location.href">Start Over</button>
                 </div>
             </div>  
         </div>
 
-        <div class="flexContainer">
-            <section class="player" id="player1">
-                <h2 id = "playerOne" class="underline">Player 1</h2>
-                <p><span id="player1Matches">0</span> matches</p>
+        <div class="flex-container">
+            <section class="player" id="player-1">
+                <h2 id = "player-one" class="underline">Player 1</h2>
+                <p><span id="player-1-matches">0</span> matches</p>
             </section>
             <section class="game-container" id="game-container">
                 <div class="card bike"><i class="hide fas fa-bicycle"></i></div>
@@ -68,9 +68,9 @@
                 <div class="card bolt"><i class="hide fas fa-bolt"></i></div>
                 <div class="card ball"><i class="hide fas fa-football-ball"></i></div>
             </section>
-            <section class="player" id="player2">
-                <h2 id="playerTwo">Player 2</h2>
-                <p><span id="player2Matches">0</span> matches</p>
+            <section class="player" id="player-2">
+                <h2 id="player-two">Player 2</h2>
+                <p><span id="player-2-matches">0</span> matches</p>
             </section>
         </div>
 
