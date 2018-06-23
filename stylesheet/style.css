@@ -31,6 +31,7 @@ header {
     color: #fff;
     font-family: "Pacifico", cursive;
     font-weight: 100;
+    font-size: 1.5rem;
 }
 
 header div,
@@ -51,10 +52,9 @@ header span {
 .start-over {
     color: #4B2165;
     background-color: #00ffff;
-    font-size: 22px;
     font-family: "Pacifico", cursive;
     font-weight: 100;
-    height: 50%;
+    height: 70%;
     width: 50%;
     border: 3px solid #fff;
 }
@@ -83,6 +83,7 @@ button:hover {
     background-color: rgba(0,0,0,0.4);
     color: #4b2165;
     font-family: "Pacifico", cursive;
+    font-size: 1.5rem;
 }
 
 .close {
@@ -107,51 +108,9 @@ button:hover {
     width: 80%;
 }
 
-.flex-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+.game-container {
     width: 100%;
     height: 88%;
-}
-
-h2 {
-    font-size: 3rem;
-}
-
-.underline {
-    text-decoration: underline;
-}
-
-p {
-    font-size: 1.75rem;
-}
-
-.player {
-    width: 25%;
-    height: 100%;
-    text-align: center;
-    font-family: "Pacifico", cursive;
-    font-weight: 100;
-}
-
-#player-1 {
-    color: #ffa07a;
-}
-
-#player-2 {
-    color: #58d68d;
-}
-
-.game-container {
-    height: 95%;
-    width: 50%;
     display: grid;
     grid-template-columns: repeat(4, 125px);
     grid-template-rows: repeat(4, 125px);
@@ -212,41 +171,7 @@ i {
 
     .guesses {
         text-transform: capitalize;
-    }
-    
-    .flex-container {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 70% 30%;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -ms-flex-line-pack: center;
-            align-content: center;
-    }
-
-    h2 {
-        font-size: 40px;
-        font-weight: 100;
-    }
-
-    #player-1 {
-        grid-column: 1;
-        grid-row: 2;
-        justify-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
-        width: 100%;
-    }
-
-    #player-2 {
-        grid-column: 2;
-        grid-row: 2;
-        justify-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
-        width: 100%;
-    }
+    }    
 
     #game-container {
         grid-column: 1 / -1;
@@ -277,30 +202,8 @@ i {
         width: 15%;
     }   
 
-    .flex-container {
-        height: 85%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap;
-    }
-
-    #player-1,
-    #player-2 {
-        width: 25%;
-    }
-
-    #player-one,
-    #player-two {
-        font-size: 26px;
-    }
-
-    section p {
-        font-size: 20px;
-    }
-
     #game-container {
+        height: 85%;
         width: 50%;
         grid-template-columns: repeat(4, 55px);
         grid-template-rows: repeat(4, 55px); 
@@ -312,7 +215,7 @@ i {
         width: 100%;
     }
 
-    section div i {
+    div i {
         font-size: 32px;
     }
 
@@ -373,7 +276,7 @@ i {
             align-self: center;
     }
 
-    .guesses{
+    .guesses {
         grid-column: 2; 
         grid-row: 2;
         justify-self: center;
@@ -381,18 +284,6 @@ i {
             align-self: center;
         font-size: 26px;
         width: 100%;
-    }
-
-    .flex-container {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 70% 30%;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
     }
 
     #game-container {
@@ -404,22 +295,8 @@ i {
         grid-gap: 10px;
     }
 
-    section div i {
+    div i {
         font-size: 40px;
-    }
-
-    #player-1 {
-        grid-column: 1;
-        grid-row: 2;
-        width: 100%;
-        font-size: 28px;
-    }
-
-    #player-2 {
-        grid-column: 2;
-        grid-row: 2;
-        width: 100%;
-        font-size: 28px;
     }
 
 }

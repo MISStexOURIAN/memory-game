@@ -1,120 +1,99 @@
 {
-    var parentContainer = document.getElementById('game-container');
-    const cards = document.querySelectorAll('.card');
-    let countClicks = 0;
-    let totalCardClicks = 0;
-    let clickedCards = [];
-    let clickedCardsIcons = [];
-    let clickedCardsClass = [];
+    let cards = document.querySelectorAll('.card');
+    let cardClicks = 0;
+    let clickedCardClass = [];
+    let clickedCard = [];
     let matches = 0;
-    let player1Matches = document.getElementById('player-1-matches');
-    let player2Matches = document.getElementById('player-2-matches');
-    let totalMatches = [];
-    let guesses = 1;
+    let guesses = 0;
+    let icon;
+    var parentContainer = document.getElementById('game-container');
+    let timerVar = setInterval(countTimer, 1000);
+    let totalSeconds = 0;
 
-
-    // Thanks to w3schools for this variation of a timer!
-    const countDownDate = new Date().getTime();
-    const x = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = now - countDownDate;
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        const formattedSeconds = (`0${seconds}`).slice(-2);
-        document.getElementById('time').innerHTML = `${minutes}:${formattedSeconds}`;
-    }, 1000);
-
-    // randomly place cards on page load
-    for (let i = parentContainer.children.length; i >= 0; i--) {
-        const parentContainer = document.getElementById('game-container');
-        parentContainer.appendChild(parentContainer.children[Math.random() * i | 0]);
-    };
-
-    // attach click event to cards
-    for (let j = 0; j < cards.length; j++) {
-        cards[j].addEventListener('click', function () {
-            let icon = this.firstChild;
-            totalCardClicks += 1;
-            clickedCards.push(this);                        
-            icon.classList.toggle('hide');
-            countClicks += 1;
-            clickedCardsIcons.push(icon);
-            clickedCardsClass.push(this.className);
-
-            // after 2 card clicks, update guesses, toggle active player, check cards for matches
-            if (countClicks === 2) {
-                countClicks = 0;
-                document.getElementById('guesses').innerHTML = guesses++;
-
-                setTimeout(() => {
-                    let player1 = document.getElementById('player-one');
-                    let player2 = document.getElementById('player-two');
-                    player1.classList.toggle('underline');
-                    player2.classList.toggle('underline');
-                }, 1200);
-
-                let firstCard = clickedCardsIcons[0];
-                let secondCard = clickedCardsIcons[1];
-            
-                if (clickedCardsClass[0] == clickedCardsClass[1]) {
-                    let player1 = document.getElementById('player-one');
-                    let player2 = document.getElementById('player-two');
-                    if (player1.classList.contains('underline')) {
-                        let newScore = parseInt(player1Matches.innerText) + 1;
-                        player1Matches.innerText = newScore;
-                    } else if (player2.classList.contains('underline')) {
-                        let newScore = parseInt(player2Matches.innerText) + 1;
-                        player2Matches.innerText = newScore;
-                    };
-                    totalMatches.push('1');
-
-                    if (totalMatches.length === 8) {
-                        modal.style.display = 'block';
-                        document.getElementById('total-time').innerHTML = document.getElementById('time').innerHTML;
-                        clearInterval(x);
-                        if (parseInt(player1Matches.innerHTML) > parseInt(player2Matches.innerHTML)) {
-                            document.getElementById('winner').innerHTML = 'Player 1';
-                        } else if (parseInt(player1Matches.innerHTML) < parseInt(player2Matches.innerHTML)) {
-                            document.getElementById('winner').innerHTML = 'Player 2';
-                        } else if (parseInt(player1Matches.innerHTML) == parseInt(player2Matches.innerHTML)) {
-                            document.getElementById('congratulations').innerHTML = 'You have tied!';
-                        };
-                    };
-                } else {
-                    
-                    setTimeout(icon => {
-                        firstCard.classList.toggle('hide');
-                        secondCard.classList.toggle('hide');
-                    }, 1200);
-                };
-
-                clickedCardsClass = [];
-                clickedCardsIcons = [];
-                clickedCards = [];
+    // randomize cards and start timer on page load
+    randomizeCards();
     
-            };
-
-            if (totalCardClicks == 18) {
-                document.getElementById('star-three').style.visibility = 'hidden';
-                document.getElementById('modal-star-three').style.visibility = 'hidden';
-            } else if (totalCardClicks == 36) {
-                document.getElementById('star-two').style.visibility = 'hidden';
-                document.getElementById('modal-star-two').style.visibility = 'hidden';
-            };
-        });
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    document.getElementsByClassName('close')[0].onclick = () => {
-        const modal = document.getElementById('modal');
-        modal.style.display = "none";
+    // timer function...thanks to w3schools!
+    function countTimer() {
+        ++totalSeconds;
+        let hour = Math.floor(totalSeconds /3600);
+        let minute = Math.floor((totalSeconds - hour*3600)/60);
+        let seconds = totalSeconds - (hour * 3600 + minute * 60);
+        let formattedSeconds = (`0${seconds}`).slice(-2);
+        document.getElementById('time').innerHTML = `${minute}:${formattedSeconds}`;
+    }
+    
+    // randomly place cards on page load
+    function randomizeCards () {
+        for (let i = parentContainer.children.length; i >= 0; i--) {            
+            parentContainer.appendChild(parentContainer.children[Math.random() * i | 0]);
+        };
     }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = event => {
-        if (event.target == modal) {
-            const modal = document.getElementById('modal');
-            modal.style.display = 'none';
+    // function to run when all matches have been found
+    function win() {
+        // grab time and display it in modal
+        document.getElementById('total-time').innerHTML = document.getElementById('time').innerHTML;
+        //stop clock
+        clearInterval(timerVar);
+        //display modal
+        let modal = document.getElementById('modal');
+        modal.style.display = 'block';
+    }
+
+    // function to run when cards don't match
+    function noMatch() {
+        let firstCard = clickedCard[0];
+        let secondCard = clickedCard[1];
+        // turn over unmatching cards after delay
+        setTimeout(function() {
+            firstCard.classList.toggle('hide');
+            secondCard.classList.toggle('hide');
+        }, 1200);
+    }
+
+    function resetItems() {
+        clickedCardClass = []; // reset icon class array to empty
+        clickedCard = []; // reset clicked cards array to empty
+        guesses += 1; // increase number of guesses by 1
+        document.getElementById('guesses').innerHTML = guesses;
+    }
+
+    function stars() { // decrease star rating according to total guesses
+        if (guesses == 9) {
+            document.getElementById('star-three').style.visibility = 'hidden';
+            document.getElementById('modal-star-three').style.visibility = 'hidden';
+        } else if (guesses == 18) {
+            document.getElementById('star-two').style.visibility = 'hidden';
+            document.getElementById('modal-star-two').style.visibility = 'hidden';
         };
-    };
-};
+    }
+
+    for (let j = 0; j < cards.length; j++) { // attach click event to cards
+        cards[j].addEventListener('click', function () {
+            icon = this.firstChild;
+            icon.classList.toggle('hide'); // turn card over
+            clickedCardClass.push(this.className); // store card class to test for matching
+            clickedCard.push(icon); // store card that was clicked to enable hiding in noMatch function
+            cardClicks++; // track number of clicks
+
+            if (cardClicks === 2) { // when two cards are clicked      
+    
+                if (clickedCardClass[0] != clickedCardClass[1]) { // if the icons don't match
+                    noMatch(); // run the noMatch function
+                    resetItems();        
+                } else { // if cards match
+                    matches += 1; // increase number of matches by 1
+                    resetItems();
+                    if (matches === 8) { // if all cards have been matched
+                        win(); // run the win function
+                    };
+                };
+
+                cardClicks = 0; // reset card clicks counter to 0
+            };
+
+            stars(); // change star rating accoring to number of guesses
+        });    
+    };    
+}
