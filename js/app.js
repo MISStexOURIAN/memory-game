@@ -12,6 +12,11 @@
 
     // randomize cards and start timer on page load
     randomizeCards();
+
+    // function to reset game when button is clicked
+    function resetGame() {
+        location.reload();
+    }
     
     // timer function...thanks to w3schools!
     function countTimer() {
